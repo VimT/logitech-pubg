@@ -8,7 +8,7 @@ PUBG no-recoil script for Logitech gaming mouse
 
 # 使用说明
 
-fork from [logitech-pubg](https://github.com/liantian-cn/logitech-pubg)
+fork from [logitech-pubg](https://github.com/liantian-cn/logitech-pubg)  
 感谢`liantian-cn`
 
 此为自用版本
@@ -28,9 +28,10 @@ fork from [logitech-pubg](https://github.com/liantian-cn/logitech-pubg)
 - `lAlt` 忽略键，当自动连点开启时则 临时取消连点，关闭时则开启
 
 鼠标按键（使用罗技G502）：
-![](https://github.com/VimT/logitech-pubg/20171113204848.png)
 
-ump9，同时也适合全配件的m416和scar-l 
+![](https://github.com/VimT/logitech-pubg/raw/master/img/20171113204848.png)
+
+ump9，同时也适合全配件的m416和scar-l  
 akm的模式同样适用于sks和mini 14
 
 
