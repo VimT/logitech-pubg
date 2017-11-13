@@ -1,7 +1,11 @@
+-- 某个lock控制开关
+-- 或者设置  只有按住才触发
+
 --------------------------------------------------------------------------
 ----------------        Basic Variable       -----------------------------
 ----------------         Do not edit                 ---------------------
 --------------------------------------------------------------------------
+local open_switch_key = "capslock"
 local current_weapon = "none"
 
 --------------------------------------------------------------------------
@@ -11,25 +15,25 @@ local current_weapon = "none"
 ---- key bind ----
 
 local ump9_key = 8
-local akm_key = nil
-local m16a4_key = 5
 local m416_key = 7
-local scarl_key = nil
+local m16a4_key = 5
+local akm_key = 4
+local scarl_key = 9
 local uzi_key = nil
-
 local set_off_key = 6
 
 
 ---- fire key ----
 
 local fire_key = "Pause"
-local mode_switch_key = "capslock"
+local mode_switch_key = "numlock"
 
 
 ---- ignore key ----
 ---- can use "lalt", "ralt", "alt"  "lshift", "rshift", "shift"  "lctrl", "rctrl", "ctrl"
 
-local ignore_key = "lshift"
+-- 使用lctrl作为暂停键
+local ignore_key = "lalt"
 
 --- Sensitivity in Game
 --- default is 50.0
@@ -159,6 +163,26 @@ function recoil_value(_weapon,_duration)
 end
 
 
+function close_status_click()
+    PressKey(fire_key)
+    repeat
+        Sleep(30)
+    until not IsMouseButtonPressed(1)
+    ReleaseKey(fire_key)
+end
+
+
+function open_status_click()
+    local shoot_duration = 0.0
+    repeat
+        local intervals,recovery = recoil_value(current_weapon,shoot_duration)
+        PressAndReleaseKey(fire_key)
+        MoveMouseRelative(0, recovery)
+        Sleep(intervals)
+        shoot_duration = shoot_duration + intervals
+    until not IsMouseButtonPressed(1)
+end
+
 --------------------------------------------------------------------------
 ----------------          OnEvent          ------------------------------
 --------------------------------------------------------------------------
@@ -191,21 +215,10 @@ function OnEvent(event, arg)
         current_weapon = "scarl"
     elseif (event == "MOUSE_BUTTON_PRESSED" and arg == 1) then
         -- button 1 : Shoot
-        if ((current_weapon == "none") or IsModifierPressed(ignore_key)) then
-            PressKey(fire_key)
-            repeat
-                Sleep(30)
-            until not IsMouseButtonPressed(1)
-            ReleaseKey(fire_key)
+        if (IsKeyLockOn(open_switch_key) == IsModifierPressed(ignore_key)) then
+            close_status_click()
         else
-            local shoot_duration = 0.0
-            repeat
-                local intervals,recovery = recoil_value(current_weapon,shoot_duration)
-                PressAndReleaseKey(fire_key)
-                MoveMouseRelative(0, recovery )
-                Sleep(intervals)
-                shoot_duration = shoot_duration + intervals
-            until not IsMouseButtonPressed(1)
+            open_status_click()
         end
     elseif (event == "MOUSE_BUTTON_RELEASED" and arg == 1) then
         ReleaseKey(fire_key)
