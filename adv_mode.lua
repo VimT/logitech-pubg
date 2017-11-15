@@ -166,6 +166,10 @@ end
 function close_status_click()
     PressKey(fire_key)
     repeat
+        -- 如果在 关闭 状态下，按了ignore_key，就开启
+        if (IsModifierPressed(ignore_key)) then
+            open_status_click()
+        end
         Sleep(30)
     until not IsMouseButtonPressed(1)
     ReleaseKey(fire_key)
