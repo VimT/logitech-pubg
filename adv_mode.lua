@@ -32,8 +32,8 @@ local mode_switch_key = "numlock"
 ---- ignore key ----
 ---- can use "lalt", "ralt", "alt"  "lshift", "rshift", "shift"  "lctrl", "rctrl", "ctrl"
 
--- 使用lctrl作为暂停键
-local ignore_key = "lalt"
+-- 使用lshift作为暂停键
+local ignore_key = "lshift"
 
 --- Sensitivity in Game
 --- default is 50.0
@@ -47,7 +47,7 @@ local scope4x_sensitivity = 50
 local weapon_speed_mode = false
 local obfs_mode = true
 local interval_ratio = 0.75
-local random_seed = 1
+local random_seed = 1.5
 
 --------------------------------------------------------------------------
 ----------------        Recoil Table        ------------------------------
