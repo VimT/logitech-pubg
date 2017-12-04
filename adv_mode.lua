@@ -26,7 +26,7 @@ local set_off_key = 6
 ---- fire key ----
 
 local fire_key = "Pause"
-local mode_switch_key = "numlock"
+local mode_switch_key = "scrolllock"
 
 
 ---- ignore key ----

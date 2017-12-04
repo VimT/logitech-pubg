@@ -17,14 +17,13 @@ fork from [logitech-pubg](https://github.com/liantian-cn/logitech-pubg)
 
 游戏中设置：
 - 开火： 改成`Pause`
-- 取消自动跑步的 `Num Lock`
 - 使用默认的鼠标精度（50）
 - 开启宏时枪设置成单点
 
 
 宏按键：
 - `Caps Lock` 表示自动连点的开关
-- `Num Lock` 表示是否为四倍镜，注意游戏里要取消 `自动跑步` 的键。
+- `Scroll Lock` 表示是否为四倍镜
 - `lshift` 忽略键，当自动连点开启时则 临时取消连点，关闭时则开启  
 （**扔雷的时候一定要关掉！不要问我是怎么知道的（手动再见**）
 
